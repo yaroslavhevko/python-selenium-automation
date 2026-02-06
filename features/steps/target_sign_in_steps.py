@@ -7,6 +7,7 @@ from time import sleep
 def click_sign_in(context):
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='accountNav-signIn']").click()
 
+
 @then('Sign in message is shown')
 def verify_sign_in_msg(context):
     actual_text = context.driver.find_element(By.XPATH, "//h1[text()='Sign in or create account']").text
