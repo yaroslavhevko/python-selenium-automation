@@ -8,9 +8,9 @@ Feature: Test case to add any Target’s product into the cart
 
   Scenario: User can add a product to cart
     Given Open Target main page
-    When Search for Lego
+    When Search for pen
     And Click on Add to Cart button
-    #And Store product name
+    And Store product name
     And Confirm Add to Cart button from side navigates
     And Open cart page
     Then Verify cart has 1 item(s)

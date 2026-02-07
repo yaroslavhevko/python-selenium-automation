@@ -11,12 +11,17 @@ SIDE_NAV_PROD_NAME =(By.XPATH, "//*[@data-test='content-wrapper']//h4")  #By.CSS
 
 @when('Click on Add to Cart button')
 def click_on_add_to_cart(context):
-    context.driver.find_element(*ADD_TO_CART_BTN)
+    sleep(7)
+    context.driver.find_element(*ADD_TO_CART_BTN).click()
 
     context.driver.wait.until(
         EC.element_to_be_clickable(ADD_TO_CART_BTN),
         message='Side navigate to Add to Cart not clickable'
     )
+
+    elements = context.driver.find_elements(*ADD_TO_CART_BTN)
+    element = elements[-1]
+    element.click()
 
 
 @when('Store product name')

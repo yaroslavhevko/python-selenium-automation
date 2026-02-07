@@ -10,7 +10,7 @@ from features.steps.target_storycards import SEARCH_ICON
 
 SEARCH_FIELD =(By.CSS_SELECTOR, "[data-test='@web/Search/SearchInput']")
 SEARCH_BUTTON =(By.CSS_SELECTOR, "[data-test='@web/Search/SearchButton']")
-
+CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartIcon']")
 
 
 @when('Click on account icon')
@@ -19,7 +19,8 @@ def click_account(context):
 
 @when('Click on cart icon')
 def click_cart(context):
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartIcon']").click()
+   context.app.header.click_cart()
+   #context.driver.find_element(*CART_ICON).click()
 
 @when('Input {search_word} into search field')
 def input_search(context, search_word):
@@ -32,16 +33,15 @@ def input_search(context, search_word):
 
 @when('Search for {product}')
 def search_for_product(context, product):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(product)
-    context.driver.find_element(*SEARCH_BUTTON).click()
-    context.driver.wait.until(
-        EC.presence_of_element_located(SEARCH_FIELD),
-        message='Search query not found'
-    )
-    context.driver.wait.until(
-        EC.presence_of_element_located(SEARCH_BUTTON),
-    message='Search not found'
-    ).click()
+    context.app.header.search(product)
+   # context.driver.wait.until(
+    #    EC.presence_of_element_located(SEARCH_FIELD),
+    #    message='Search query not found'
+   # )
+   # context.driver.wait.until(
+   #     EC.presence_of_element_located(SEARCH_BUTTON),
+   # message='Search not found'
+   # ).click()
 
 
 
